@@ -1,0 +1,56 @@
+#ifndef _TVECTOR2D_H
+#define _TVECTOR2D_H
+
+#include "tnumeric.h"
+
+namespace ty{
+
+class TPoint;
+class TVector3d;
+class TMatrix;
+
+class TVector2d
+{
+public:
+	TVector2d();
+	~TVector2d();
+
+	TVector2d(treal v1, treal v2);
+	TVector2d(const TPoint& point);
+	TVector2d(const TVector2d& v);
+
+	bool isNull() const;
+	treal length() const;
+	treal lengthSquared() const;
+	void normalize();
+	TVector2d normalized() const;
+	void setX(treal x);
+	void setY(treal y);
+	treal x() const;
+	treal y() const;
+	treal& rx();
+	treal& ry();
+	TVector2d& operator+=(const TVector2d& v);
+	TVector2d& operator-=(const TVector2d& v);
+	//TVector3d& operator*=(const TVector2d& v);
+	TVector2d& operator*=(treal factor);
+	TVector2d& operator/=(treal factor);
+	TVector2d& operator/=(const TVector2d& v);
+	TVector2d operator* (const TMatrix& m);
+
+	//dotProduct
+	treal dot(const TVector2d& v);
+	//mulitpy
+	//TVector3d cross(const TVector2d& v);
+
+	void rotate(treal angle);
+private:
+	treal m_x=0.0;
+	treal m_y=0.0;
+	bool m_row=false;
+};
+
+}//namespace ty
+
+#endif //_TVECTOR2D_H
+
