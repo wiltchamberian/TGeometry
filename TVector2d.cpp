@@ -3,9 +3,8 @@
 #include "TPoint.h"
 #include "TMatrix.h"
 #include "tgeo_algorithm.h"
-#include <cassert>
 
-namespace ty{
+TGEOMETRY_BEGIN
 
 TVector2d::TVector2d()
 {
@@ -18,13 +17,13 @@ m_x(point.x()), m_y(point.y())
 	
 }
 
-TVector2d::TVector2d(const TVector2d& v):
+TVector2d::TVector2d(const TVector2d& v) :
 m_x(v.m_x), m_y(v.m_y), m_row(v.m_row)
 {
 
 }
 
-TVector2d::TVector2d(treal v1, treal v2):
+TVector2d::TVector2d(treal v1, treal v2) :
 m_x(v1), m_y(v2)
 {
 
@@ -49,7 +48,7 @@ treal TVector2d::lengthSquared() const
 	return pow(m_x, 2) + pow(m_y, 2);
 }
 
-void TVector2d::normalize()
+void tgeometry::TVector2d::normalize()
 {
 	if (isNull()) return;
 	treal len = length();
@@ -74,7 +73,7 @@ void TVector2d::setY(treal y)
 	m_y = y;
 }
 
-treal TVector2d::x() const
+tgeometry::treal tgeometry::TVector2d::x() const
 {
 	return m_x;
 }
@@ -89,7 +88,7 @@ treal& TVector2d::rx()
 	return m_x;
 }
 
-treal& TVector2d::ry()
+tgeometry::treal& tgeometry::TVector2d::ry()
 {
 	return m_y;
 }
@@ -107,7 +106,14 @@ TVector2d TVector2d::operator*(const TMatrix& m)
 	return TVector2d(m_x*m.m_x11 + m_y*m.m_x21, m_x*m.m_x12 + m_y*m.m_x22);
 }
 
-treal TVector2d::dot(const TVector2d& v)
+TVector2d TVector2d::operator*(treal factor) const
+{
+	TVector2d output;
+	output *= factor;
+	return output;
+}
+
+treal TVector2d::dot(const TVector2d& v) const
 {
 	return m_x*v.m_x + m_y*v.m_y;
 }
@@ -137,11 +143,25 @@ TVector2d& TVector2d::operator-=(const TVector2d& v)
 	return *this;
 }
 
-TVector2d& TVector2d::operator+=(const TVector2d& v)
+tgeometry::TVector2d& tgeometry::TVector2d::operator+=(const TVector2d& v)
 {
 	m_x += v.m_x;
 	m_y += v.m_y;
 	return *this;
 }
 
+TVector2d& TVector2d::operator=(const TVector2d& v)
+{
+	m_x = v.m_x;
+	m_y = v.m_y;
 }
+
+TVector2d TVector2d::operator/(treal factor) const
+{
+	assert(!isZero(factor));
+	TVector2d output;
+	output /= factor;
+	return output;
+}
+
+TGEOMETRY_END

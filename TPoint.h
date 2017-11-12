@@ -3,39 +3,46 @@
 
 #include "tnumeric.h"
 
-namespace ty{
+TGEOMETRY_BEGIN
 
-	class TVector2d;
+class TVector2d;
 
-	class TPoint
-	{
-	public:
-		TPoint();
-		~TPoint();
+class TPoint
+{
+public:
+	TPoint();
+	~TPoint();
 
-		TPoint(const TPoint& point);
-		TPoint(treal x, treal y);
+	TPoint(const TPoint& point);
+	TPoint(treal x, treal y);
+	TPoint(const TVector2d& v);
 
-		bool isNull();
-		treal& rx();
-		treal& ry();
-		void setX(treal x);
-		void setY(treal y);
-		treal x() const;
-		treal y() const;
-		TPoint& operator*=(treal factor);
-		TPoint& operator+=(const TPoint& point);
-		TPoint& operator-=(const TPoint& point);
-		TPoint& operator/=(treal divisor);
+	TPoint& operator=(const TPoint& pt);
 
-		void move(const TVector2d& v);
-	private:
-		treal m_x;
-		treal m_y;
+	bool isNull();
+	treal& rx();
+	treal& ry();
+	void setX(treal x);
+	void setY(treal y);
+	treal x() const;
+	treal y() const;
+	TPoint& operator*=(treal factor);
+	TPoint& operator+=(const TPoint& point);
+	TPoint& operator-=(const TPoint& point);
+	TPoint& operator/=(treal divisor);
+	TPoint operator*(treal factor) const;
+	TPoint operator+(const TPoint& pt) const;
+	TPoint operator-(const TPoint& pt) const;
+	TPoint operator/(treal factor) const;
 
-	};
+	void move(const TVector2d& v);
+private:
+	treal m_x;
+	treal m_y;
 
-}//namespace ty
+};
+
+TGEOMETRY_END
 
 #endif// _TPOINT_H
 

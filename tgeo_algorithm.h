@@ -2,9 +2,10 @@
 #define _TGEO_ALGORITHM_H
 
 #include <cmath>
+#include "TNumeric.h"
 #include "TPoint.h"
 
-namespace ty{
+TGEOMETRY_BEGIN
 
 inline treal square(treal v)
 {
@@ -26,6 +27,6 @@ inline treal tSin(treal alpha)
 	return sin(alpha);
 }
 
-}
+TGEOMETRY_END
 
 #endif //_TGEO_ALGORITHM_H

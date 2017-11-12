@@ -2,9 +2,12 @@
 #define _TNUMERIC_H
 
 #include <limits>
+#include <cassert>
+#include "TUtility.h"
 using namespace std;
 
-namespace ty{
+
+TGEOMETRY_BEGIN
 
 typedef double treal;
 
@@ -27,6 +30,6 @@ bool isEqual(const _T& v1, const _T& v2)
 }
 
 
-}// namespace ty
+TGEOMETRY_END
 
 #endif

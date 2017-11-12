@@ -1,10 +1,11 @@
 #ifndef _SEGMENT_H
 #define _SEGMENT_H
 
+#include "TUtility.h"
 #include "TVector2d.h"
 #include "TPoint.h"
 
-namespace ty{
+TGEOMETRY_BEGIN
 
 //Ö±Ïß
 class TLine;
@@ -50,7 +51,7 @@ private:
 	TPoint m_p2;
 };
 
-}
+TGEOMETRY_END
 
 #endif //_SEGMENT_H
 

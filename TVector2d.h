@@ -1,9 +1,9 @@
 #ifndef _TVECTOR2D_H
 #define _TVECTOR2D_H
 
-#include "tnumeric.h"
+#include "TNumeric.h"
 
-namespace ty{
+TGEOMETRY_BEGIN
 
 class TPoint;
 class TVector3d;
@@ -18,6 +18,7 @@ public:
 	TVector2d(treal v1, treal v2);
 	TVector2d(const TPoint& point);
 	TVector2d(const TVector2d& v);
+	TVector2d& operator= (const TVector2d& v);
 
 	bool isNull() const;
 	treal length() const;
@@ -36,10 +37,12 @@ public:
 	TVector2d& operator*=(treal factor);
 	TVector2d& operator/=(treal factor);
 	TVector2d& operator/=(const TVector2d& v);
+	TVector2d operator* (treal factor) const;
 	TVector2d operator* (const TMatrix& m);
+	TVector2d operator/ (treal factor) const;
 
 	//dotProduct
-	treal dot(const TVector2d& v);
+	treal dot(const TVector2d& v) const;
 	//mulitpy
 	//TVector3d cross(const TVector2d& v);
 
@@ -50,7 +53,7 @@ private:
 	bool m_row=false;
 };
 
-}//namespace ty
+TGEOMETRY_END
 
 #endif //_TVECTOR2D_H
 

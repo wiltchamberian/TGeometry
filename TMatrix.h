@@ -4,9 +4,9 @@
 #ifndef _TMATRIX_H
 #define _TMATRIX_H
 
-#include "tnumeric.h"
+#include "TNumeric.h"
 
-namespace ty{
+TGEOMETRY_BEGIN
 
 class TVector2d;
 
@@ -38,7 +38,7 @@ private:
 	treal m_x22;
 };
 
-}// namespace ty
+TGEOMETRY_END
 
 #endif //_TMATRIX_H
 
