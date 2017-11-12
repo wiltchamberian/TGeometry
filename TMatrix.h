@@ -30,6 +30,7 @@ public:
 	treal x12() const;
 	treal x21() const;
 	treal x22() const;
+	static TMatrix eye();
 private:
 	treal m_x11;
 	treal m_x12;

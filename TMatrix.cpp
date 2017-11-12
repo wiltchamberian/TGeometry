@@ -69,6 +69,11 @@ namespace ty{
 		return m_x22;
 	}
 
+	TMatrix TMatrix::eye()
+	{
+		return TMatrix(1, 0, 0, 1);
+	}
+
 	TMatrix::~TMatrix()
 	{
 	}
