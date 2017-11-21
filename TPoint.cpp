@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "TPoint.h"
 #include "TVector2d.h"
 
@@ -18,6 +17,13 @@ TPoint::TPoint(treal x, treal y) :
 m_x(x), m_y(y)
 {
 
+}
+
+TPoint& TPoint::operator=(const TPoint& pt)
+{
+	m_x = pt.m_x;
+	m_y = pt.m_y;
+	return *this;
 }
 
 TPoint::~TPoint()

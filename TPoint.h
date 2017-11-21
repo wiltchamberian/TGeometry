@@ -36,6 +36,7 @@ public:
 	TPoint operator/(treal factor) const;
 
 	void move(const TVector2d& v);
+
 private:
 	treal m_x;
 	treal m_y;

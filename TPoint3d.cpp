@@ -37,6 +37,8 @@ TPoint3d& TPoint3d::operator=(const TPoint3d& pt)
 	m_x = pt.m_x;
 	m_y = pt.m_y;
 	m_z = pt.m_z;
+
+	return *this;
 }
 
 bool TPoint3d::isNull()
@@ -89,11 +91,13 @@ treal TPoint3d::z() const
 	return m_z;
 }
 
-tgeometry::TPoint3d& tgeometry::TPoint3d::operator*=(treal factor)
+TPoint3d& TPoint3d::operator*=(treal factor)
 {
 	m_x *= factor;
 	m_y *= factor;
 	m_z *= factor;
+
+	return *this;
 }
 
 TPoint3d& TPoint3d::operator+=(const TPoint3d& pt)
@@ -101,6 +105,8 @@ TPoint3d& TPoint3d::operator+=(const TPoint3d& pt)
 	m_x += pt.m_x;
 	m_y += pt.m_y;
 	m_z += pt.m_z;
+
+	return *this;
 }
 
 TPoint3d TPoint3d::operator+(const TPoint3d pt) const
@@ -113,6 +119,8 @@ TPoint3d& TPoint3d::operator-=(const TPoint3d& pt)
 	m_x -= pt.m_x;
 	m_y -= pt.m_y;
 	m_z -= pt.m_z;
+
+	return *this;
 }
 
 TPoint3d TPoint3d::operator-(const TPoint3d pt) const
@@ -132,6 +140,8 @@ TPoint3d& TPoint3d::operator/=(treal divisor)
 	m_x /= divisor;
 	m_y /= divisor;
 	m_z /= divisor;
+
+	return *this;
 }
 
 TPoint3d TPoint3d::operator/(treal factor) const

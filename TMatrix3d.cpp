@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "TMatrix3d.h"
 
 TGEOMETRY_BEGIN

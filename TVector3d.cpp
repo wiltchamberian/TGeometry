@@ -62,6 +62,7 @@ treal TVector3d::lengthSquared() const
 void TVector3d::normalize()
 {
 	treal len = length();
+	assert(!isZero(len));
 	m_x /= len;
 	m_y /= len;
 	m_z /= len;
@@ -175,7 +176,7 @@ TVector3d& TVector3d::operator+=(const TVector3d& v)
 
 TVector3d TVector3d::operator+(const TVector3d& v) const
 {
-
+	return TVector3d(m_x + v.m_x, m_y + v.m_y, m_z + v.m_z);
 }
 
 TGEOMETRY_END

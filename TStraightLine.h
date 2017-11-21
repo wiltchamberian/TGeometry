@@ -2,6 +2,7 @@
 #define _TSTRAIGHTLINE_H
 
 #include "TNumeric.h"
+#include "TVector2d.h"
 
 TGEOMETRY_BEGIN
 
@@ -25,7 +26,8 @@ public:
 	//equation Ax+By+C=0;
 	TStraightLine(treal A, treal B, treal C);
 
-private:
+	TVector2d character() const;
+
 	//the straightline pass TPoint2d(m_v)and normal to m_v
 	TVector2d m_v;
 };

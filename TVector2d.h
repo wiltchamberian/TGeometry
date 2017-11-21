@@ -7,7 +7,7 @@ TGEOMETRY_BEGIN
 
 class TPoint;
 class TVector3d;
-class TMatrix;
+class TMatrix2d;
 
 class TVector2d
 {
@@ -25,6 +25,8 @@ public:
 	treal lengthSquared() const;
 	void normalize();
 	TVector2d normalized() const;
+	void orthogonal();
+	TVector2d orthogonaled() const;
 	void setX(treal x);
 	void setY(treal y);
 	treal x() const;
@@ -38,7 +40,7 @@ public:
 	TVector2d& operator/=(treal factor);
 	TVector2d& operator/=(const TVector2d& v);
 	TVector2d operator* (treal factor) const;
-	TVector2d operator* (const TMatrix& m);
+	TVector2d operator* (const TMatrix2d& m);
 	TVector2d operator/ (treal factor) const;
 
 	//dotProduct
@@ -47,6 +49,7 @@ public:
 	//TVector3d cross(const TVector2d& v);
 
 	void rotate(treal angle);
+	TVector2d project(const TVector2d& v);
 private:
 	treal m_x=0.0;
 	treal m_y=0.0;

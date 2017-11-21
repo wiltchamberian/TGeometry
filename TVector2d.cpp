@@ -1,7 +1,6 @@
-#include "stdafx.h"
 #include "TVector2d.h"
 #include "TPoint.h"
-#include "TMatrix.h"
+#include "TMatrix2d.h"
 #include "tgeo_algorithm.h"
 
 TGEOMETRY_BEGIN
@@ -63,6 +62,11 @@ TVector2d TVector2d::normalized() const
 	return output;
 }
 
+TVector2d TVector2d::orthogonaled() const
+{
+	return TVector2d(-m_y,m_x);
+}
+
 void TVector2d::setX(treal x)
 {
 	m_x = x;
@@ -101,7 +105,14 @@ TVector2d& TVector2d::operator/=(treal factor)
 	return *this;
 }
 
-TVector2d TVector2d::operator*(const TMatrix& m)
+TVector2d& TVector2d::operator*=(treal factor)
+{
+	m_x *= factor;
+	m_y *= factor;
+	return *this;
+}
+
+TVector2d TVector2d::operator*(const TMatrix2d& m)
 {
 	return TVector2d(m_x*m.m_x11 + m_y*m.m_x21, m_x*m.m_x12 + m_y*m.m_x22);
 }
@@ -120,8 +131,14 @@ treal TVector2d::dot(const TVector2d& v) const
 
 void TVector2d::rotate(treal angle)
 {
-	TMatrix m(tCos(angle), -tSin(angle), tSin(angle), tCos(angle));
+	TMatrix2d m(tCos(angle), -tSin(angle), tSin(angle), tCos(angle));
 	*this = m*(*this);
+}
+
+TVector2d TVector2d::project(const TVector2d& v)
+{
+	TVector2d tmp = v.normalized();
+	return tmp*dot(tmp);
 }
 
 #if 0
@@ -154,6 +171,8 @@ TVector2d& TVector2d::operator=(const TVector2d& v)
 {
 	m_x = v.m_x;
 	m_y = v.m_y;
+
+	return *this;
 }
 
 TVector2d TVector2d::operator/(treal factor) const
